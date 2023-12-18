@@ -6,8 +6,6 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
 import java.util.concurrent.TimeUnit;
 
 public class yourCartPage {
@@ -16,7 +14,7 @@ public class yourCartPage {
 
     public yourCartPage(AppiumDriver driver) {
         this.appiumDriver = driver;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
     }
 
