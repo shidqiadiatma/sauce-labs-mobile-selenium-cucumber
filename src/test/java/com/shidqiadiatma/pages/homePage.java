@@ -19,11 +19,26 @@ public class homePage {
 
     public homePage(AppiumDriver driver) {
         this.appiumDriver = driver;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Menu']/android.view.ViewGroup/android.widget.ImageView")
+    private WebElement burgerNav_icon;
+
+    @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView[2]")
+    private WebElement swagLabs_icon;
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']/android.view.ViewGroup/android.widget.ImageView")
     private WebElement cart_icon;
+
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart drop zone']/android.view.ViewGroup")
+    private WebElement top_greyBox;
+
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart drop zone']/android.view.ViewGroup/android.widget.TextView")
+    private WebElement title_page;
+
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Toggle']/android.widget.ImageView")
+    private WebElement toggle_icon;
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Modal Selector Button']/android.view.ViewGroup/android.view.ViewGroup/android.widget.ImageView")
     private WebElement filter_icon;
@@ -45,6 +60,17 @@ public class homePage {
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']/android.view.ViewGroup/android.widget.TextView")
     private WebElement Numberbadge_cart;
+
+    public void verify_Component_OnHomePage(String titlePage_text) {
+        keyword.verifyElementExist(burgerNav_icon);
+        keyword.verifyElementExist(swagLabs_icon);
+        keyword.verifyElementExist(cart_icon);
+        keyword.verifyElementExist(top_greyBox);
+        keyword.verifyWordingOnElement(title_page, titlePage_text);
+        keyword.verifyElementExist(toggle_icon);
+        keyword.verifyElementExist(filter_icon);
+
+    }
 
     public void add_firstProduct_to_cart() {
         keyword.waitUntilElementIsClickable(add_to_cart_product1);
