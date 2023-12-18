@@ -6,7 +6,6 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -35,7 +34,6 @@ public class mobileFactory {
             dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13");
             dc.setCapability(MobileCapabilityType.DEVICE_NAME, "RR8N2059SAE");
         }
-
         return new AndroidDriver(url, dc);
     }
 }
