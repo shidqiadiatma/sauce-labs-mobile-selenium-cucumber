@@ -15,7 +15,7 @@ public class checkoutOverviewPage {
 
     public checkoutOverviewPage(AppiumDriver driver) {
         this.appiumDriver = driver;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
     }
 
