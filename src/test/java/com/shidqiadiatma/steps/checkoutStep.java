@@ -6,7 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
+import com.shidqiadiatma.helpers.randomData;
 
 public class checkoutStep {
 
@@ -42,13 +42,25 @@ public class checkoutStep {
     @And("user fill in Checkout Information")
     public void userFillInCheckoutInformation() {
         checkoutInformationPage checkoutInformationPage = new checkoutInformationPage(androidDriver);
-        checkoutInformationPage.fill_checkoutInformation();
+        checkoutInformationPage.verify_Component_OnCheckoutInformation();
+        checkoutInformationPage.fill_checkoutInformation(
+                randomData.getFirstName(),
+                randomData.getLastName(),
+                randomData.getPostalCode()
+        );
     }
 
     @And("user tap Finish button on Checkout Overview page")
     public void userTapFinishButtonOnCheckoutOverviewPage() {
         checkoutOverviewPage checkoutOverviewPage = new checkoutOverviewPage(androidDriver);
         checkoutOverviewPage.tap_finishButton();
+    }
+
+    @Then("user verify success checkout")
+    public void userVerifySuccessCheckout() {
+        checkoutCompletePage checkoutCompletePage = new checkoutCompletePage(androidDriver);
+        checkoutCompletePage.verify_component_OnCheckoutComplete();
+
     }
 
 }
