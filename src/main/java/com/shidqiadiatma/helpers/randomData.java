@@ -35,6 +35,4 @@ public class randomData {
         String priceText = element.getText().replace("$", "");
         return Double.parseDouble(priceText);
     }
-
-
 }
