@@ -6,7 +6,6 @@ import com.shidqiadiatma.pages.loginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
 
 public class loginStep {
 
@@ -40,7 +39,7 @@ public class loginStep {
     @Then("user direct to dashboard screen")
     public void userDirectToDashboardScreen() {
         homePage homePage = new homePage(androidDriver);
-        Assert.assertTrue(homePage.verifySuccessLogin());
+        homePage.verify_Component_OnHomePage("PRODUCTS");
 
     }
     @Then("user verify snackbar error with value {string} exists")
