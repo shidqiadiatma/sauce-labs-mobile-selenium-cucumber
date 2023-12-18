@@ -6,7 +6,6 @@ import com.shidqiadiatma.pages.loginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import org.testng.Assert;
 
 public class commonStep {
 
@@ -19,16 +18,16 @@ public class commonStep {
     @Given("user is already on home page")
     public void userIsAlreadyOnHomePage() {
         loginPage loginPage = new loginPage(androidDriver);
-        Assert.assertTrue(loginPage.verifyLayout_swaglabsLogo());
-        Assert.assertTrue(loginPage.verifyLayout_swaglabsImage());
-        loginPage.doLogin_autofill();
+        loginPage.verify_Component_OnLoginPage();
+        loginPage.tap_Autofill();
+        loginPage.verify_usernameIsFilledIn();
+        loginPage.tap_loginButton();
     }
 
     @Given("user open SwagLabs app")
     public void userOpenSwagLabsApp() {
         loginPage loginPage = new loginPage(androidDriver);
-        Assert.assertTrue(loginPage.verifyLayout_swaglabsLogo());
-        Assert.assertTrue(loginPage.verifyLayout_swaglabsImage());
+        loginPage.verify_Component_OnLoginPage();
     }
 
     @And("user take screenshot {string}")
