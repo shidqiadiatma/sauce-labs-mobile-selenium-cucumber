@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.Assert;
 
 
 import java.io.File;
@@ -55,6 +56,11 @@ public class keyword {
 
     public static void verifyElementExist(WebElement element) {
         element.isDisplayed();
+    }
+
+    public static void verifyWordingOnElement(WebElement element, String expectedText) {
+        String actualText = element.getText();
+        Assert.assertEquals(actualText, expectedText);
     }
 
     public static void waitUntilElementIsClickable(WebElement element) {
