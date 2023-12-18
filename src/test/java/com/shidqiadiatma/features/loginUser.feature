@@ -1,14 +1,14 @@
-@smoke
+@login
 Feature: Login
 
-  @smoke
+  @login
   Scenario: As a user, I should be able to log in using correct registered data on secondhand-binaracademy
     Given user open SwagLabs app
     When user login using "standard_user"
     Then user direct to dashboard screen
     * user take screenshot "user-login-successfully"
 
-  @smoke
+  @login
   Scenario Outline: As a user, I can't log in using wrong password to secondhand-binaracademy
     Given user open SwagLabs app
     When user login using "locked_out_user"
