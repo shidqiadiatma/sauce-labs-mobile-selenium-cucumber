@@ -15,7 +15,7 @@ public class loginPage {
 
     public loginPage(AppiumDriver driver) {
         this.appiumDriver = driver;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
     }
 
@@ -39,14 +39,12 @@ public class loginPage {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']/android.widget.TextView")
     private WebElement snackbar_error;
 
-    public boolean verifyLayout_swaglabsLogo(){
-        keyword.waitUntilElementIsVisible(swaglabs_logo);
-        return swaglabs_logo.isDisplayed();
-    }
-
-    public boolean verifyLayout_swaglabsImage(){
-        keyword.waitUntilElementIsVisible(swaglabs_image);
-        return swaglabs_image.isDisplayed();
+    public void verify_Component_OnLoginPage(){
+        keyword.verifyElementExist(swaglabs_logo);
+        keyword.verifyElementExist(input_username);
+        keyword.verifyElementExist(input_password);
+        keyword.verifyElementExist(login_button);
+        keyword.verifyElementExist(swaglabs_image);
     }
 
     public void doLogin(String username, String password) {
@@ -56,16 +54,24 @@ public class loginPage {
         keyword.waitFor(2);
     }
 
-    public void doLogin_autofill() {
+    public void tap_Autofill() {
         keyword.waitUntilElementIsClickable(autofill_standard_user);
         keyword.tapElement(autofill_standard_user);
         keyword.waitFor(3);
+    }
+
+    public void verify_usernameIsFilledIn() {
         String value = input_username.getText();
         Assert.assertEquals(value, "standard_user");
         keyword.waitFor(3);
+    }
+
+    public void tap_loginButton() {
         keyword.tapElement(login_button);
         keyword.waitFor(3);
     }
+
+
 
     public void verifySnackbarErrorExist(String expectedMessage) {
         String actual = snackbar_error.getText();
