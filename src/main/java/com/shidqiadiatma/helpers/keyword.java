@@ -26,21 +26,13 @@ import java.util.concurrent.TimeUnit;
 public class keyword {
 
     private static final AppiumDriver driver = driverManager.getInstance().getDriver();
-    private static final int ANIMATION_TIME = 200;
+//    private static final int ANIMATION_TIME = 200;
     private static final int PRESS_TIME = 200;
     private static final int EDGE_BORDER = 10;
     private static final Duration WAIT_DURATION = Duration.ofSeconds(20);
 
     private static WebDriverWait getWebDriverWait() {
         return new WebDriverWait(driver, WAIT_DURATION);
-    }
-
-    private static void initializeElements() {
-        PageFactory.initElements(driver, keyword.class);
-    }
-
-    public static void setImplicitWaitTimeout() {
-        driver.manage().timeouts().implicitlyWait(WAIT_DURATION.getSeconds(), TimeUnit.SECONDS);
     }
 
     public static void waitFor(int seconds) {
@@ -51,7 +43,6 @@ public class keyword {
         }
     }
 
-
     public static void inputText(WebElement element, String value) {
         waitUntilElementIsVisible(element);
         element.clear();
@@ -60,6 +51,10 @@ public class keyword {
 
     public static void waitUntilElementIsVisible(WebElement element) {
         getWebDriverWait().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void verifyElementExist(WebElement element) {
+        element.isDisplayed();
     }
 
     public static void waitUntilElementIsClickable(WebElement element) {
@@ -103,13 +98,6 @@ public class keyword {
         Point end = new Point(endX, endY);
 
         swipe(end, start);
-    }
-
-    public static void dragAndDrop(WebElement sourceElement, WebElement targetElement) {
-        Point source = sourceElement.getLocation();
-        Point target = targetElement.getLocation();
-
-        swipe(source, target);
     }
 
     public static void pullToRefresh() {
@@ -163,7 +151,6 @@ public class keyword {
             default -> throw new IllegalArgumentException("swipeScreen(): dir: '" + dir + "' NOT supported");
         };
 
-        // execute swipe using TouchAction
         try {
             new TouchAction((PerformsTouchActions) driver)
                     .press(pointOptionStart)
