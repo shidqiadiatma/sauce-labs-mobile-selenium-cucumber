@@ -4,7 +4,6 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class driverManager {
 
-    // implements design pattern singleton and thread local
     private static final driverManager instance = new driverManager();
 
     ThreadLocal<AndroidDriver> driver = new ThreadLocal<>();
