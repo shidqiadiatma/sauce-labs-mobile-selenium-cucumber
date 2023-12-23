@@ -1,23 +1,25 @@
 package com.shidqiadiatma.steps;
 
 import com.shidqiadiatma.factories.driverManager;
-import com.shidqiadiatma.pages.homePage;
-import com.shidqiadiatma.pages.loginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import com.shidqiadiatma.pages.HomePage;
+import com.shidqiadiatma.pages.LoginPage;
 
 public class loginStep {
 
-    private final AndroidDriver androidDriver;
+    private final LoginPage loginPage;
+    private final HomePage homePage;
 
     public loginStep() {
-        androidDriver = driverManager.getInstance().getDriver();
+        AndroidDriver androidDriver = driverManager.getInstance().getDriver();
+        loginPage = new LoginPage(androidDriver);
+        homePage = new HomePage(androidDriver);
     }
 
     @When("user login using {string}")
     public void loginAs(String credentialType) {
-
         String username;
         String password;
 
@@ -30,21 +32,20 @@ public class loginStep {
                 username = "locked_out_user";
                 password = "secret_sauce";
             }
-            default -> throw new RuntimeException("credential type doesn't exist");
+            default -> throw new RuntimeException("Credential type doesn't exist");
         }
-        loginPage loginPage = new loginPage(androidDriver);
+
         loginPage.doLogin(username, password);
+        loginPage.tap_loginButton();
     }
 
     @Then("user direct to dashboard screen")
     public void userDirectToDashboardScreen() {
-        homePage homePage = new homePage(androidDriver);
         homePage.verify_Component_OnHomePage("PRODUCTS");
-
     }
+
     @Then("user verify snackbar error with value {string} exists")
     public void userVerifySnackbarError(String value) {
-        loginPage loginPage = new loginPage(androidDriver);
         loginPage.verifySnackbarErrorExist(value);
     }
 
