@@ -4,21 +4,14 @@ import com.shidqiadiatma.helpers.enums.direction;
 import com.shidqiadiatma.factories.driverManager;
 import com.shidqiadiatma.helpers.enums.fileType;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
-
-
 import java.io.File;
 import java.time.Duration;
 import java.util.Collections;
@@ -27,9 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class keyword {
 
     private static final AppiumDriver driver = driverManager.getInstance().getDriver();
-//    private static final int ANIMATION_TIME = 200;
-    private static final int PRESS_TIME = 200;
-    private static final int EDGE_BORDER = 10;
+
     private static final Duration WAIT_DURATION = Duration.ofSeconds(20);
 
     private static WebDriverWait getWebDriverWait() {
@@ -106,33 +97,6 @@ public class keyword {
         swipe(end, start);
     }
 
-    public static void pullToRefresh() {
-        int deviceWidth = driver.manage().window().getSize().getWidth();
-        int deviceHeight = driver.manage().window().getSize().getHeight();
-        int midX = deviceWidth / 2;
-        int midY = deviceHeight / 2;
-        int bottomEdge = (int) (deviceHeight * 0.85f);
-
-        new TouchAction((PerformsTouchActions) driver)
-                .press(PointOption.point(midX, midY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
-                .moveTo(PointOption.point(midX, bottomEdge))
-                .release().perform();
-    }
-
-    public static void swipeByElement(WebElement startElement, WebElement endElement) {
-        int startX = startElement.getLocation().getX() + (startElement.getSize().getWidth() / 2);
-        int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
-        int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
-        int endY = endElement.getLocation().getY() + (endElement.getSize().getHeight() / 2);
-
-        new TouchAction((PerformsTouchActions) driver)
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
-                .moveTo(PointOption.point(endX, endY))
-                .release().perform();
-    }
-
     public static void takeScreenshot(String fileName) {
         try {
             TakesScreenshot screenshot = ((TakesScreenshot) driverManager.getInstance().getDriver());
@@ -145,27 +109,5 @@ public class keyword {
         }
     }
 
-    public static void swipeScreen(direction dir) {
-        Dimension dims = driver.manage().window().getSize();
-        PointOption pointOptionStart = PointOption.point(dims.width / 2, dims.height / 2);
-
-        PointOption pointOptionEnd = switch (dir) {
-            case DOWN -> PointOption.point(dims.width / 2, dims.height - EDGE_BORDER);
-            case UP -> PointOption.point(dims.width / 2, EDGE_BORDER);
-            case LEFT -> PointOption.point(EDGE_BORDER, dims.height / 2);
-            case RIGHT -> PointOption.point(dims.width - EDGE_BORDER, dims.height / 2);
-            default -> throw new IllegalArgumentException("swipeScreen(): dir: '" + dir + "' NOT supported");
-        };
-
-        try {
-            new TouchAction((PerformsTouchActions) driver)
-                    .press(pointOptionStart)
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(PRESS_TIME)))
-                    .moveTo(pointOptionEnd)
-                    .release().perform();
-        } catch (Exception e) {
-            System.err.println("swipeScreen(): TouchAction FAILED\n" + e.getMessage());
-        }
-    }
 }
 
