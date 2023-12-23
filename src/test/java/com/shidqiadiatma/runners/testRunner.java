@@ -9,10 +9,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
 import java.net.MalformedURLException;
-
 @CucumberOptions(features = "src/test/java/com/shidqiadiatma/features",
         glue = "com.shidqiadiatma.steps",
-        tags = "@sorting",
+        tags = "@checkout",
         plugin = {
                 "pretty",
                 "html:reports/cucumber-result/cucumber-reports.html",
@@ -22,7 +21,6 @@ import java.net.MalformedURLException;
 public class testRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider()
     public Object[][] scenarios() {
         return super.scenarios();
     }

@@ -10,3 +10,4 @@ Feature: Checkout
     * user tap Checkout button on Your Cart page
     * user fill in Checkout Information
     * user tap Finish button on Checkout Overview page
+    Then user verify success checkout
