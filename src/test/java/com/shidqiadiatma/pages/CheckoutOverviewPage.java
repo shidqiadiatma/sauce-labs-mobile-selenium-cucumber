@@ -6,14 +6,18 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.concurrent.TimeUnit;
 
-public class checkoutOverviewPage {
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
+public class CheckoutOverviewPage {
 
     protected AppiumDriver appiumDriver;
 
-    public checkoutOverviewPage(AppiumDriver driver) {
+    public CheckoutOverviewPage(AppiumDriver driver) {
         this.appiumDriver = driver;
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
@@ -28,6 +32,5 @@ public class checkoutOverviewPage {
         keyword.tapElement(finish_button);
         keyword.waitFor(3);
     }
-
 
 }

@@ -5,8 +5,12 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.concurrent.TimeUnit;
+
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
 
 public class CheckoutCompletePage {
     protected AppiumDriver appiumDriver;

@@ -8,6 +8,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import com.shidqiadiatma.pages.*;
 
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
 public class checkoutStep {
 
     private final HomePage homePage;

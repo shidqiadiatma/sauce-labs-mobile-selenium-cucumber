@@ -1,20 +1,22 @@
 package com.shidqiadiatma.pages;
 
-import com.shidqiadiatma.helpers.enums.direction;
 import com.shidqiadiatma.helpers.keyword;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
 import java.util.concurrent.TimeUnit;
 
-public class checkoutInformationPage {
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
+public class CheckoutInformationPage {
 
     protected AppiumDriver appiumDriver;
 
-    public checkoutInformationPage(AppiumDriver driver) {
+    public CheckoutInformationPage(AppiumDriver driver) {
         this.appiumDriver = driver;
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
@@ -28,6 +30,7 @@ public class checkoutInformationPage {
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']/android.view.ViewGroup/android.widget.ImageView")
     private WebElement cart_icon;
+
     @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]")
     private WebElement top_greyBox;
 
@@ -46,11 +49,8 @@ public class checkoutInformationPage {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CANCEL']")
     private WebElement cancel_button;
 
-
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CONTINUE']")
     private WebElement continue_button;
-
-
 
     public void verify_Component_OnCheckoutInformation () {
         keyword.verifyElementExist(burgerNav_icon);
@@ -63,18 +63,14 @@ public class checkoutInformationPage {
         keyword.verifyElementExist(input_postalCode);
         keyword.verifyElementExist(continue_button);
         keyword.verifyElementExist(cancel_button);
-
-
     }
+
     public void fill_checkoutInformation(String firstName, String lastName, String postalCode) {
         keyword.inputText(input_firstName, firstName);
         keyword.inputText(input_lastName, lastName);
         keyword.inputText(input_postalCode, postalCode);
         keyword.tapElement(continue_button);
         keyword.waitFor(3);
-
-
-
     }
 
 }

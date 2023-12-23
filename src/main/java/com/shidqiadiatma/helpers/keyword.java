@@ -17,6 +17,11 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
 public class keyword {
 
     private static final AppiumDriver driver = driverManager.getInstance().getDriver();

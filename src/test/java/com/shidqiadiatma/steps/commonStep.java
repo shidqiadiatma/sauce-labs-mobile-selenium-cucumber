@@ -8,6 +8,11 @@ import com.shidqiadiatma.helpers.keyword;
 import com.shidqiadiatma.pages.HomePage;
 import com.shidqiadiatma.pages.LoginPage;
 
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
 public class commonStep {
 
     private final LoginPage loginPage;
@@ -21,15 +26,15 @@ public class commonStep {
 
     @Given("user is already on home page")
     public void userIsAlreadyOnHomePage() {
-        loginPage.verify_Component_OnLoginPage();
+        loginPage.verifyComponentsOnLoginPage();
         loginPage.doLogin("standard_user", "secret_sauce");
-        loginPage.tap_loginButton();
+        loginPage.tapLoginButton();
         homePage.verify_Component_OnHomePage("PRODUCTS");
     }
 
     @Given("user open SwagLabs app")
     public void userOpenSwagLabsApp() {
-        loginPage.verify_Component_OnLoginPage();
+        loginPage.verifyComponentsOnLoginPage();
     }
 
     @And("user take screenshot {string}")

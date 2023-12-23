@@ -6,6 +6,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
 public class sortingStep {
 
     private final AndroidDriver androidDriver;

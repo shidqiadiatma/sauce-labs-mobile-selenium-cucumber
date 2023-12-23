@@ -2,9 +2,13 @@ package com.shidqiadiatma.helpers;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 import java.util.Locale;
+
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
 
 public class randomData {
     static Faker faker = new Faker(new Locale("ID"));

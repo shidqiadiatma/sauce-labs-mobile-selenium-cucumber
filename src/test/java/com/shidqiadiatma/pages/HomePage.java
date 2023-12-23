@@ -10,15 +10,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class homePage {
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
+public class HomePage {
 
     protected AppiumDriver appiumDriver;
 
-    public homePage(AppiumDriver driver) {
+    public HomePage(AppiumDriver driver) {
         this.appiumDriver = driver;
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);

@@ -7,6 +7,11 @@ import io.cucumber.java.en.When;
 import com.shidqiadiatma.pages.HomePage;
 import com.shidqiadiatma.pages.LoginPage;
 
+/**
+ * @author Shidqi Adiatma a.k.a. hipstertester on 23/12/23
+ * @project sauce-labs-mobile-selenium-cucumber
+ */
+
 public class loginStep {
 
     private final LoginPage loginPage;
@@ -36,7 +41,7 @@ public class loginStep {
         }
 
         loginPage.doLogin(username, password);
-        loginPage.tap_loginButton();
+        loginPage.tapLoginButton();
     }
 
     @Then("user direct to dashboard screen")
