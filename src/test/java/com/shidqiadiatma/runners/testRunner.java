@@ -17,10 +17,11 @@ import java.net.MalformedURLException;
 @CucumberOptions(
         features = "src/test/java/com/shidqiadiatma/features",
         glue = "com.shidqiadiatma.steps",
-        tags = "",
+        tags = "@sorting",
         plugin = {
                 "pretty",
                 "html:reports/cucumber-result/cucumber-reports.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:reports/cucumber-result/cucumber-reports.json"
         },
         monochrome = true
